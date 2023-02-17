@@ -1,7 +1,7 @@
 <?php require_once("includes/sessions.php");
 require('includes/db.php'); ?>
 <?php require_once("includes/functions.php"); ?>
-<?php confirm_logged_in();?>
+<?php confirm_logged_in(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +38,7 @@ require('includes/db.php'); ?>
       <!--logo start-->
       <a href="admin_index.php" class="logo"><b>Uni<span>uyo</span></b></a>
       <!--logo end-->
-      
+
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="logout.php">Logout</a></li>
@@ -55,24 +55,26 @@ require('includes/db.php'); ?>
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="admin_index.php"><img src="img/fr-05.jpg" class="img-circle" width="80"></a></p>
-          <h5 class="centered"><?php echo" ".$_SESSION['username']." "?></h5>
+          <h5 class="centered">
+            <?php echo " " . $_SESSION['username'] . " " ?>
+          </h5>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-desktop"></i>
               <span>Dashboard</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="add_fee.php">Add Fee</a></li>
               <li><a href="add_dues.php">Add Dues </a></li>
               <li><a href="add_results.php">Add Results</a></li>
             </ul>
-          </li>               
+          </li>
           <li>
             <a href="admin_actions.php">
               <i class="fa fa-envelope"></i>
               <span>Profile </span>
               <span class="label label-theme pull-right mail-info"></span>
-              </a>
+            </a>
           </li>
         </ul>
         <!-- sidebar menu end-->
@@ -87,9 +89,9 @@ require('includes/db.php'); ?>
       <section class="wrapper site-min-height">
         <div class="row mt">
           <div class="col-lg-12">
-          <div class="form-panel">
+            <div class="form-panel">
               <form action="includes/add_fee_process.php" method="POST" class="form-horizontal style-form">
-              <div class="form-group">
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Fee Amount</label>
                   <div class="col-sm-10">
                     <input type="text" name="amount" class="form-control">
@@ -98,7 +100,8 @@ require('includes/db.php'); ?>
                 <div class="form-group">
                   <label class="control-label col-md-3">Due Date</label>
                   <div class="col-md-3 col-xs-11">
-                    <input name="due_date" class="form-control form-control-inline input-medium default-date-picker" type="date">
+                    <input name="due_date" class="form-control form-control-inline input-medium default-date-picker"
+                      type="date">
                     <span class="help-block">Select date</span>
                   </div>
                 </div>
@@ -123,11 +126,12 @@ require('includes/db.php'); ?>
                 <div class="form-group">
                   <label class="control-label col-md-3">Closing Date</label>
                   <div class="col-md-3 col-xs-11">
-                    <input name="closing_date" class="form-control form-control-inline input-medium default-date-picker" type="date">
+                    <input name="closing_date" class="form-control form-control-inline input-medium default-date-picker"
+                      type="date">
                     <span class="help-block">Select date</span>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-theme">Register</button>      
+                <button type="submit" class="btn btn-theme">Register</button>
               </form>
             </div>
           </div>
@@ -142,10 +146,10 @@ require('includes/db.php'); ?>
       <div class="text-center">
         <p>
           &copy; Copyrights <strong>UNIUYO</strong>. All Rights Reserved
-        </p>        
+        </p>
         <a href="blank.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->
@@ -163,4 +167,5 @@ require('includes/db.php'); ?>
   <!--script for this page-->
   <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
 </body>
+
 </html>

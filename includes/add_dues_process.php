@@ -9,23 +9,21 @@ $errors = array();
 $required_fields = array('amount', 'due_date', 'session');
 check_required_fields($required_fields);
 
-if ( empty($errors)) {
-    $amount = trim($_POST['amount']);
-    $due_date = trim($_POST['due_date']);    
+if (empty($errors)) {
+	$amount = trim($_POST['amount']);
+	$due_date = trim($_POST['due_date']);
 	$session = trim($_POST['session']);
-    
-    $sql = "INSERT INTO dues (id, amount, date_due, session) VALUES ('', '$amount', '$due_date','$session')";
+
+	$sql = "INSERT INTO dues (id, amount, date_due, session) VALUES ('', '$amount', '$due_date','$session')";
 	$result = mysqli_query($conn, $sql);
-    if ($result) {
+	if ($result) {
 		header("refresh: 2; url= ../admin_index.php");
 		echo "Fee added";
-	}
-	else{
+	} else {
 		header("refresh: 2; url= ../add_dues.php");
 		echo "Failed to add fee";
 	}
-}
-else{
+} else {
 	echo "Form Error";
 }
 ?>

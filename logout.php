@@ -10,7 +10,7 @@ $_SESSION = array();
 //destroy session cookie
 
 if (isset($_COOKIE[session_name()])) {
-	setcookie(session_name(), '', time()-4200, '/');
+	setcookie(session_name(), '', time() - 4200, '/');
 }
 
 //destroy session

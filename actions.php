@@ -1,31 +1,31 @@
 <?php require_once("includes/sessions.php");
 require('includes/db.php'); ?>
 <?php require_once("includes/functions.php"); ?>
-<?php confirm_logged_in();?>
+<?php confirm_logged_in(); ?>
 
 <?php if (isset($_POST['submit'])) {
 
   $oldpassword = sha1($_POST['old_password']);
   $newpassword = sha1($_POST['new_password']);
 
-  $query = "SELECT hashed_password FROM users WHERE reg_number = '".$_SESSION['username']."' limit 1";
+  $query = "SELECT hashed_password FROM users WHERE reg_number = '" . $_SESSION['username'] . "' limit 1";
 
-  $result = mysqli_query($conn,$query);
+  $result = mysqli_query($conn, $query);
   $row = mysqli_fetch_array($result);
 
   $oldpassworddb = $row["hashed_password"];
 
-	if ($oldpassword==$oldpassworddb){
-		$query = "UPDATE users SET hashed_password = '$newpassword' WHERE reg_number = '".$_SESSION['username']."'";
-		$result = mysqli_query($conn,$query);
+  if ($oldpassword == $oldpassworddb) {
+    $query = "UPDATE users SET hashed_password = '$newpassword' WHERE reg_number = '" . $_SESSION['username'] . "'";
+    $result = mysqli_query($conn, $query);
     session_destroy();
-    
-		$message = "Your password has been changed.";
 
-	}
-	else { $message = "Old paswords dont match";
-	}
- 
+    $message = "Your password has been changed.";
+
+  } else {
+    $message = "Old paswords dont match";
+  }
+
 }
 ?>
 <!DOCTYPE html>
@@ -63,7 +63,7 @@ require('includes/db.php'); ?>
       <!--logo start-->
       <a href="user_index.php" class="logo"><b>Uni<span>uyo</span></b></a>
       <!--logo end-->
-      
+
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="logout.php">Logout</a></li>
@@ -80,26 +80,28 @@ require('includes/db.php'); ?>
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="user_index.php"><img src="img/fr-05.jpg" class="img-circle" width="80"></a></p>
-          <h5 class="centered"><?php echo" ".$_SESSION['username']." "?></h5>
+          <h5 class="centered">
+            <?php echo " " . $_SESSION['username'] . " " ?>
+          </h5>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-desktop"></i>
               <span>Dashboard</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="result.php">Results</a></li>
               <li><a href="due_history.php">Dues History</a></li>
               <li><a href="fee_history.php">School Fee History</a></li>
               <li><a href="politics.php">Political Involvement</a></li>
             </ul>
-          </li>               
+          </li>
           <li>
             <a href="actions.php">
               <i class="fa fa-envelope"></i>
               <span>Profile </span>
               <span class="label label-theme pull-right mail-info"></span>
-              </a>
-          </li>          
+            </a>
+          </li>
         </ul>
         <!-- sidebar menu end-->
       </div>
@@ -114,30 +116,30 @@ require('includes/db.php'); ?>
         <h3><i class="fa fa-angle-right"></i> Change your password</h3>
         <div class="row mt">
           <div class="col-lg-12">
-          <?php
+            <?php
             if (!empty($message)) {
-              echo "<p class = 'message'>" . $message ." </p>";
-			      } 
+              echo "<p class = 'message'>" . $message . " </p>";
+            }
             ?>
-          <div class="form-panel">
+            <div class="form-panel">
               <form action="actions.php" method="POST" class="form-horizontal style-form">
-              <div class="form-group">
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Old Password</label>
                   <div class="col-sm-10">
                     <input type="password" name="old_password" class="form-control">
                   </div>
-                </div>                                
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">New Password</label>
                   <div class="col-sm-10">
                     <input type="password" class="form-control" name="new_password">
                   </div>
-                </div>                              
-                <button name ="submit" type="submit" class="btn btn-theme">Update</button>      
+                </div>
+                <button name="submit" type="submit" class="btn btn-theme">Update</button>
               </form>
             </div>
           </div>
-          </div>
+        </div>
         </div>
       </section>
       <!-- /wrapper -->
@@ -149,10 +151,10 @@ require('includes/db.php'); ?>
       <div class="text-center">
         <p>
           &copy; Copyrights <strong>UNIUYO</strong>. All Rights Reserved
-        </p>        
+        </p>
         <a href="blank.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->

@@ -1,7 +1,7 @@
 <?php require_once("includes/sessions.php");
 require('includes/db.php'); ?>
 <?php require_once("includes/functions.php"); ?>
-<?php confirm_logged_in();?>
+<?php confirm_logged_in(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +37,7 @@ require('includes/db.php'); ?>
       <!--logo start-->
       <a href="user_index.php" class="logo"><b>Uni<span>uyo</span></b></a>
       <!--logo end-->
-      
+
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="logout.php">Logout</a></li>
@@ -54,25 +54,27 @@ require('includes/db.php'); ?>
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="user_index.php"><img src="img/fr-05.jpg" class="img-circle" width="80"></a></p>
-          <h5 class="centered"><?php echo" ".$_SESSION['username']." "?></h5>
+          <h5 class="centered">
+            <?php echo " " . $_SESSION['username'] . " " ?>
+          </h5>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-desktop"></i>
               <span>Dashboard</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="result.php">Results</a></li>
               <li><a href="due_history.php">Dues History</a></li>
               <li><a href="fee_history.php">School Fee History</a></li>
               <li><a href="politics.php">Political Involvement</a></li>
             </ul>
-          </li>               
+          </li>
           <li>
             <a href="actions.php">
               <i class="fa fa-envelope"></i>
               <span>Profile </span>
               <span class="label label-theme pull-right mail-info"></span>
-              </a>
+            </a>
           </li>
         </ul>
         <!-- sidebar menu end-->
@@ -86,24 +88,25 @@ require('includes/db.php'); ?>
     <section id="main-content">
       <section class="wrapper site-min-height">
         <div class="row mt">
-        <div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i> Fee Payment History </h4>
-              <p><?php $query = "SELECT dues.session, dues_history.session FROM dues INNER JOIN dues_history ON dues.session = dues_history.session";
-                $result = mysqli_query($conn,$query);
-                if (mysqli_num_rows($result)== 0 ){
-                  echo "<br>Please pay your outstanding dues
+          <div class="content-panel">
+            <h4><i class="fa fa-angle-right"></i> Fee Payment History </h4>
+            <p>
+              <?php $query = "SELECT dues.session, dues_history.session FROM dues INNER JOIN dues_history ON dues.session = dues_history.session";
+              $result = mysqli_query($conn, $query);
+              if (mysqli_num_rows($result) == 0) {
+                echo "<br>Please pay your outstanding dues
                   <button type='submit' class='btn btn-theme'>Pay</button> ";
-                } else {
-                  echo "Your dues payment history is up to date";
-                }
-                  ?>
-              </p>
-              <hr>
-              <?php
-              $query = "SELECT * FROM dues_history WHERE reg_number = '".$_SESSION['username']."'";
-              $result = mysqli_query($conn,$query);
-              if (mysqli_num_rows($result) > 0){
-                echo "<table class='table'>
+              } else {
+                echo "Your dues payment history is up to date";
+              }
+              ?>
+            </p>
+            <hr>
+            <?php
+            $query = "SELECT * FROM dues_history WHERE reg_number = '" . $_SESSION['username'] . "'";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+              echo "<table class='table'>
                         <thead>
                           <tr>
                             <th>Due Amount</th>
@@ -111,21 +114,20 @@ require('includes/db.php'); ?>
                             <th>Session</th>
                           </tr>
                         </thead>";
-                        while ($row = mysqli_fetch_array($result)) {
-                          echo "<tbody>
+              while ($row = mysqli_fetch_array($result)) {
+                echo "<tbody>
                           <tr>
-                            <td>". $row["total_paid"]."</td>
-                            <td>". $row["date_paid"]."</td>
-                            <td>". $row["session"]."</td>
+                            <td>" . $row["total_paid"] . "</td>
+                            <td>" . $row["date_paid"] . "</td>
+                            <td>" . $row["session"] . "</td>
                           </tr>                          
                           </tbody>";
-                        }
-                        echo "</table>";
               }
-              else {
-                echo "0 results";
-              }
-              ?>                   
+              echo "</table>";
+            } else {
+              echo "0 results";
+            }
+            ?>
           </div>
         </div>
       </section>
@@ -138,10 +140,10 @@ require('includes/db.php'); ?>
       <div class="text-center">
         <p>
           &copy; Copyrights <strong>UNIUYO</strong>. All Rights Reserved
-        </p>        
+        </p>
         <a href="blank.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->

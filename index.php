@@ -27,14 +27,15 @@
       *********************************************************************************************************************************************************** -->
   <div id="login-page">
     <div class="container">
-      <form class="form-login" action ="includes/login_process.php">
+      <form class="form-login" action="includes/login_process.php">
         <h2 class="form-login-heading">sign in now</h2>
         <div class="login-wrap">
           <input type="text" name="username" class="form-control" placeholder="User Reg Number" autofocus>
           <br>
           <input type="password" name="password" class="form-control" placeholder="Password">
           <br>
-          <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+          <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN
+            IN</button>
           <hr>
         </div>
       </form>
